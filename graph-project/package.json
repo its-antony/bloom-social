@@ -1,0 +1,17 @@
+{
+  "name": "bloom-social-subgraph",
+  "version": "1.0.0",
+  "description": "BloomSocial subgraph for The Graph",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ bloom-social",
+    "create-local": "graph create --node http://localhost:8020/ bloom-social",
+    "remove-local": "graph remove --node http://localhost:8020/ bloom-social",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 bloom-social"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.80.0",
+    "@graphprotocol/graph-ts": "^0.35.0"
+  }
+}

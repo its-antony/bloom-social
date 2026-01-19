@@ -1,0 +1,39 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: BloomContent
+    network: sepolia
+    source:
+      address: "0x8Cc14193389a33F7706f8Fb68b58C48a0381D454"
+      abi: BloomContent
+      startBlock: 10033811
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Content
+        - Like
+        - User
+        - Follow
+      abis:
+        - name: BloomContent
+          file: ./abis/BloomContent.json
+      eventHandlers:
+        - event: ContentCreated(indexed uint256,indexed address,uint256,uint256,string,bytes32)
+          handler: handleContentCreated
+        - event: Liked(indexed uint256,indexed address,uint256,uint256,uint256)
+          handler: handleLiked
+        - event: AuthorRewardClaimed(indexed uint256,indexed address,uint256)
+          handler: handleAuthorRewardClaimed
+        - event: LikerRewardClaimed(indexed uint256,indexed address,uint256)
+          handler: handleLikerRewardClaimed
+        - event: Followed(indexed address,indexed address)
+          handler: handleFollowed
+        - event: Unfollowed(indexed address,indexed address)
+          handler: handleUnfollowed
+      file: ./src/mapping.ts

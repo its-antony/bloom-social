@@ -1,0 +1,41 @@
+type Content @entity(immutable: false) {
+  id: ID!
+  author: Bytes!
+  likeAmount: BigInt!
+  deadline: BigInt!
+  authorPool: BigInt!
+  likerRewardPool: BigInt!
+  totalWeight: BigInt!
+  likeCount: BigInt!
+  contentURI: String!
+  contentHash: Bytes!
+  createdAt: BigInt!
+  authorClaimed: Boolean!
+  likers: [Like!]! @derivedFrom(field: "content")
+}
+
+type Like @entity(immutable: false) {
+  id: ID!
+  content: Content!
+  liker: Bytes!
+  likeIndex: BigInt!
+  weight: BigInt!
+  claimed: Boolean!
+  likedAt: BigInt!
+}
+
+type User @entity(immutable: false) {
+  id: ID!
+  totalEarned: BigInt!
+  totalLiked: BigInt!
+  followersCount: BigInt!
+  followingCount: BigInt!
+  contentsCreated: BigInt!
+}
+
+type Follow @entity(immutable: true) {
+  id: ID!
+  follower: Bytes!
+  followee: Bytes!
+  followedAt: BigInt!
+}
