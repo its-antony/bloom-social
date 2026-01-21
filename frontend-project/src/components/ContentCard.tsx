@@ -62,8 +62,8 @@ export function ContentCard({ content, index = 0 }: ContentCardProps) {
       </div>
 
       {/* Content Preview */}
-      <div className="p-4">
-        <p className="text-[var(--ink)] leading-relaxed min-h-[4.5rem]">
+      <div className="p-4 overflow-hidden">
+        <p className="text-[var(--ink)] leading-relaxed min-h-[4.5rem] break-all">
           {content.contentURI.startsWith("ipfs://")
             ? "正在从 IPFS 加载内容..."
             : truncateText(content.contentURI, 100)}

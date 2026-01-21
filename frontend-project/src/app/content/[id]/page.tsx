@@ -213,8 +213,8 @@ export default function ContentDetailPage() {
               </div>
 
               {/* Content Body */}
-              <div className="p-6">
-                <div className="prose max-w-none">
+              <div className="p-6 overflow-hidden">
+                <div className="prose max-w-none break-all">
                   {contentURI}
                 </div>
               </div>
